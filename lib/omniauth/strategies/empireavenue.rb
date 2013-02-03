@@ -17,19 +17,13 @@ module OmniAuth
       }
 
       def request_phase
-        super
+        redirect client.auth_code.authorize_url({:state => "request_auth_code", :response_type => "code"})
       end
 
-      uid{ raw_info['ticker'] }
+      uid { access_token.params }
 
       info do
         {
-          :ticker => raw_info['ticker'],
-          :first_name => raw_info['first_name'],
-          :last_name => raw_info['last_name'],
-          :full_name => raw_info['full_name'],
-          :ticker => raw_info['ticker'],
-          :location => [raw_info['location'], raw_info['country']].reject{|v| !v || v.empty?}.join(', ')
         }
       end
 
@@ -38,9 +32,11 @@ module OmniAuth
       end
 
       def raw_info
-        @raw_info ||= JSON.parse(access_token.get("https://api.empireavenue.com/profile/info?access_token=#{access_token.token}&client_id=#{client_id}").body)
+        @raw_info = {}
       end
 
     end
   end
 end
+
+OmniAuth.config.add_camelization 'empireavenue', 'EmpireAvenue'

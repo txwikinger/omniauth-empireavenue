@@ -27,12 +27,15 @@ Here's a quick example, adding the middleware to a Rails app in
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :empireavenue, ENV['MEETUP_KEY'], ENV['MEETUP_SECRET']
+  provider :empireavenue, ENV['CLIENT_KEY'], ENV['CLIENT_SECRET']
 end
 ```
 You can then implement your authentication as usual with OmniAuth as
 shown in the excellent [Railscast
 241](http://railscasts.com/episodes/241-simple-omniauth)
+
+Do to cross domain issues the authentication hash is not constructed in this
+version. 
 
 ##Authentication Hash
 
@@ -44,7 +47,7 @@ Here's an example *Authentication Hash* available in
 
 ## License
 
-Copyright (c) 2011 by Ralph Janke         
+Copyright (c) 2013 by Ralph Janke         
 
 Permission is hereby granted, free of charge, to any person obtaining a
 copy of this software and associated documentation files (the

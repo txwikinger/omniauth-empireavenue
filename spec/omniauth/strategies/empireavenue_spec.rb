@@ -24,29 +24,4 @@ describe OmniAuth::Strategies::EmpireAvenue do
       subject.callback_path.should eq('/auth/empireavenue/callback')
     end
   end
-
-  describe '#uid' do
-    it 'returns the uid from raw_info' do
-      subject.stub(:raw_info) { { 'ticker' => 'txwikinger' } }
-      subject.uid.should == 'txwikinger'
-    end
-  end
-
-  describe '#first_name' do
-    it 'returns the name from raw_info' do
-      subject.stub(:raw_info) { { 'first_name' => 'Bert' }}
-      subject.info[:first_name].should == 'Bert'
-    end
-
-    it 'returns the last_name from raw_info' do
-      subject.stub(:raw_info) { { 'last_name' => 'Vogts' }}
-      subject.info[:last_name].should == 'Vogts'
-    end
-
-    it 'returns the full name from raw_info' do
-      subject.stub(:raw_info) { { 'full_name' => 'Berti Vogts' }}
-      subject.info[:full_name].should == 'Berti Vogts'
-    end
-
-  end
 end
