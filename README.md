@@ -1,5 +1,5 @@
 # OmniAuth EmpireAvenue
-
+[![Build Status](https://travis-ci.org/txwikinger/omniauth-empireavenue.png?branch=master)](https://travis-ci.org/txwikinger/omniauth-empireavenue)
 
 `OmniAuth::Strategies::EmpireAvenue` is an OmniAuth strategy for authenticating to
 empireavenue.com with OAuth2. Read detailed information about the empireavenue.com
